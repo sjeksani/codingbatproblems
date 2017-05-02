@@ -1,0 +1,65 @@
+<html>
+<script>
+/* Given an int array, return true if the array contains 2 twice, or 3 twice. The array will be length 0, 1, or 2. */
+
+// actual solution
+
+function double23() {
+    // console.log(JSON.stringify(arguments));
+    for (var i = 0; i < arguments.length; i++) {
+        if ((arguments[i] == 2 && arguments[i + 1] == 2) || (arguments[i] == 3 && arguments[i + 1] == 3)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function testdouble23() {
+    // test data - is an array of test values which are object
+    // each time we test a function, that will be one object made up of
+    // 2 properties, 1 is input values array and another is return value
+
+    var testData = [
+        /* 0 */
+        {
+            inputParams: [1, 2],
+            expectedOutput: false
+        }, {
+            inputParams: [2, 2],
+            expectedOutput: true
+        }, {
+            inputParams: [1, 3],
+            expectedOutput: false
+        }, {
+            inputParams: [5, 6],
+            expectedOutput: false
+        }, {
+            inputParams: [3, 3],
+            expectedOutput: true
+        }, {
+            inputParams: [2],
+            expectedOutput: false
+        }, {
+            inputParams: [2, 3],
+            expectedOutput: false
+        }, {
+            inputParams: [2, 5],
+            expectedOutput: false
+        }
+    ];
+
+    // testing code
+
+    testData.forEach(
+        function(obj) {
+            var returnedOutput = double23.apply(null, obj.inputParams);
+            console.assert(returnedOutput === obj.expectedOutput,
+                "expecting " + obj.expectedOutput + ", but returned value is " + returnedOutput);
+        }
+    );
+}
+
+testdouble23();
+</script>
+
+</html>

@@ -1,0 +1,50 @@
+<html>
+<script>
+/* We'll say that a lowercase 'g' in a string is "happy" if there is another 'g' immediately to its left or right. Return true if all the g's in the given string are happy. */
+
+// actual solution
+
+function gHappy(string) {
+
+    // console.log(JSON.stringify(arguments));
+    string = "X" + string + "X"; // for corner cases
+    for (var i = 1; i < string.length - 1; i++)
+        if (string.charAt(i) == 'g' && string.charAt(i - 1) != 'g' && string.charAt(i + 1) != 'g')
+            return false;
+    return true;
+}
+
+function testgHappy() {
+    // test data - is an array of test values which are object
+    // each time we test a function, that will be one object made up of
+    // 2 properties, 1 is input values array and another is return value
+
+    var testData = [
+        /* 0 */
+        {
+            inputParams: ["xxggxx"],
+            expectedOutput: true
+        }, {
+            inputParams: ["xxgxx"],
+            expectedOutput: false
+        }, {
+            inputParams: ["xxggyygxx"],
+            expectedOutput: false
+        }
+    ];
+
+    // testing code
+
+    testData.forEach(
+        function(obj) {
+            var returnedOutput = gHappy.apply(null, obj.inputParams);
+            console.log(returnedOutput === obj.expectedOutput,
+                "expecting " + obj.expectedOutput + ", but returned value is " + returnedOutput);
+        }
+    );
+}
+
+testgHappy();
+</script>
+
+</html>

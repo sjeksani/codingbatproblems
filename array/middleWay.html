@@ -1,0 +1,74 @@
+<html>
+<script>
+/* Given 2 int arrays, a and b, each length 3, return a new array length 2 containing their middle elements. */
+
+// actual solution
+
+function middleWay() {
+
+    var newarray = [arguments[0][1], arguments[1][1]];
+
+
+    return newarray;
+
+
+    //return JSON.stringify(arguments[0][1]);
+
+}
+
+function testmiddleWay() {
+    // test data - is an array of test values which are object
+    // each time we test a function, that will be one object made up of
+    // 2 properties, 1 is input values array and another is return value
+
+    var testData = [
+        /* 0 */
+        {
+            inputParams: [
+                [1, 2, 3],
+                [4, 0, 6]
+            ],
+            expectedOutput: [2, 0]
+        }, {
+            inputParams: [
+                [1, 2, 3],
+                [7, 3, 2]
+            ],
+            expectedOutput: [2, 3]
+        }, {
+            inputParams: [
+                [1, 2, 3],
+                [1, 5, 7]
+            ],
+            expectedOutput: [2, 5]
+        }, {
+            inputParams: [
+                [7, 7, 3],
+                [5, 7, 5]
+            ],
+            expectedOutput: [7, 7]
+        }, {
+            inputParams: [
+                [1, 2, 3],
+                [2, 2, 2]
+            ],
+            expectedOutput: [2, 2]
+        }
+    ];
+
+    // testing code
+
+    testData.forEach(
+        function(obj) {
+            var returnedOutput = middleWay.apply(null, obj.inputParams);
+            console.assert(returnedOutput === obj.expectedOutput,
+                "expecting " + obj.expectedOutput + ", but returned value is " + returnedOutput + " for the input params " + JSON.stringify(obj.inputParams));
+            console.log(obj.expectedOutput);
+        }
+    );
+}
+
+testmiddleWay();
+</script>
+
+</html>

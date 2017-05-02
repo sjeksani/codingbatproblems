@@ -1,0 +1,63 @@
+<html>
+<script>
+/* Return the number of even ints in the given array. Note: the % "mod" operator computes the remainder, e.g. 5 % 2 is 1. */
+
+// actual solution
+
+function makeMiddle() {
+    // console.log(JSON.stringify(arguments));
+    var count = [];
+
+    var middle = arguments.length / 2;
+
+    count.push(arguments[middle - 1]);
+
+    count.push(arguments[middle]);
+
+    return count;
+}
+
+function testmakeMiddle() {
+    // test data - is an array of test values which are object
+    // each time we test a function, that will be one object made up of
+    // 2 properties, 1 is input values array and another is return value
+
+    var testData = [
+        /* 0 */
+        {
+            inputParams: [1, 2, 3, 4],
+            expectedOutput: [2, 3]
+        }, {
+            inputParams: [7, 1, 2, 3, 4, 9],
+            expectedOutput: [2, 3]
+        }, {
+            inputParams: [1, 2],
+            expectedOutput: [1, 2]
+        }, {
+            inputParams: [5, 2, 4, 7],
+            expectedOutput: [2, 4]
+        }, {
+            inputParams: [9, 0, 4, 3, 9, 1],
+            expectedOutput: [4, 3]
+        }
+    ];
+
+    // testing code
+
+    testData.forEach(
+        function(obj) {
+            var returnedOutput = makeMiddle.apply(null, obj.inputParams);
+            console.table(returnedOutput === obj.expectedOutput,
+                "expecting " + obj.expectedOutput + ", but returned value is " + returnedOutput);
+
+            console.table(["apples", "oranges", "bananas"]);
+
+
+        }
+    );
+}
+
+testmakeMiddle();
+</script>
+
+</html>

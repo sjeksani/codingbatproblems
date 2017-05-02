@@ -1,0 +1,69 @@
+<html>
+<script>
+/* Return the number of even ints in the given array. Note: the % "mod" operator computes the remainder, e.g. 5 % 2 is 1. */
+
+// actual solution
+
+function no14() {
+    // console.log(JSON.stringify(arguments));
+    for (var i = 0; i < arguments.length; i++) {
+        if (arguments[i] == 1 || arguments[i] == 4) {
+            return true;
+        } else if (arguments[i] != 1 && arguments[i] != 4) {
+            return true;
+        } else if (arguments[i] == 1 && arguments[i] == 4) {
+            return false;
+        }
+    }
+    return false;
+}
+
+function testno14() {
+    // test data - is an array of test values which are object
+    // each time we test a function, that will be one object made up of
+    // 2 properties, 1 is input values array and another is return value
+
+    var testData = [
+        /* 0 */
+        {
+            inputParams: [1, 2, 3],
+            expectedOutput: true
+        }, {
+            inputParams: [1, 2, 3, 4],
+            expectedOutput: false
+        }, {
+            inputParams: [2, 3, 4],
+            expectedOutput: true
+        }, {
+            inputParams: [],
+            expectedOutput: true
+        }, {
+            inputParams: [11, 9, 0, 1],
+            expectedOutput: true
+        }, {
+            inputParams: [2, 11, 9, 0],
+            expectedOutput: true
+        }, {
+            inputParams: [4],
+            expectedOutput: true
+        }, {
+            inputParams: [2, 5, 12],
+            expectedOutput: true
+        }
+    ];
+
+    // testing code
+
+    testData.forEach(
+        function(obj) {
+            var returnedOutput = no14.apply(null, obj.inputParams);
+            console.assert(returnedOutput === obj.expectedOutput,
+                "expecting " + obj.expectedOutput + ", but returned value is " + returnedOutput + "for " + obj.inputParams);
+        }
+    );
+}
+
+testno14();
+</script>
+
+</html>

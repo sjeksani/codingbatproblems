@@ -1,0 +1,51 @@
+<html>
+<script>
+/*
+Given an array of ints of odd length, return a new array length 3 containing the elements from the middle of the array. The array length will be at least 3. */
+
+// actual solution
+
+function midThree() {
+    // console.log(JSON.stringify(arguments));
+    var result = [];
+    var num = (arguments.length - 1) / 2;
+    result.push(arguments[num - 1]);
+    result.push(arguments[num]);
+    result.push(arguments[num + 1]);
+    return result;
+}
+
+function testmidThree() {
+    // test data - is an array of test values which are object
+    // each time we test a function, that will be one object made up of
+    // 2 properties, 1 is input values array and another is return value
+
+    var testData = [
+        /* 0 */
+        {
+            inputParams: [1, 2, 3, 4, 5],
+            expectedOutput: [2, 3, 4]
+        }, {
+            inputParams: [8, 6, 7, 5, 3, 0, 9],
+            expectedOutput: [7, 5, 3]
+        }, {
+            inputParams: [1, 2, 3],
+            expectedOutput: [1, 2, 3]
+        }
+    ];
+
+    // testing code
+
+    testData.forEach(
+        function(obj) {
+            var returnedOutput = midThree.apply(null, obj.inputParams);
+            console.assert(returnedOutput === obj.expectedOutput,
+                "expecting " + obj.expectedOutput + ", but returned value is " + returnedOutput);
+        }
+    );
+}
+
+testmidThree();
+</script>
+
+</html>

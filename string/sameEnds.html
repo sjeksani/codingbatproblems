@@ -1,0 +1,52 @@
+<html>
+<script>
+/* Given a string, return the longest substring that appears at both the beginning and end of the string without overlapping. For example, sameEnds("abXab") is "ab". */
+
+// actual solution
+
+function sameEnds(str) {
+
+    // console.log(JSON.stringify(arguments));
+    var result = "";
+    var len = str.length;
+    for (var i = 0; i <= len / 2; i++)
+        for (var j = len / 2; j < len; j++)
+            if (str.substring(0, i) == str.substring(j))
+                result = str.substring(0, i);
+    return result;
+}
+
+function testsameEnds() {
+    // test data - is an array of test values which are object
+    // each time we test a function, that will be one object made up of
+    // 2 properties, 1 is input values array and another is return value
+
+    var testData = [
+        /* 0 */
+        {
+            inputParams: ["abXYab"],
+            expectedOutput: "ab"
+        }, {
+            inputParams: ["xx"],
+            expectedOutput: "x"
+        }, {
+            inputParams: ["xxx"],
+            expectedOutput: "x"
+        }
+    ];
+
+    // testing code
+
+    testData.forEach(
+        function(obj) {
+            var returnedOutput = sameEnds.apply(null, obj.inputParams);
+            console.log(returnedOutput === obj.expectedOutput,
+                "expecting " + obj.expectedOutput + ", but returned value is " + returnedOutput);
+        }
+    );
+}
+
+testsameEnds();
+</script>
+
+</html>

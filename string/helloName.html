@@ -1,0 +1,46 @@
+<html>
+<script>
+/* Return the number of even ints in the given array. Note: the % "mod" operator computes the remainder, e.g. 5 % 2 is 1. */
+
+// actual solution
+
+function helloName(name) {
+    // console.log(JSON.stringify(arguments));
+    var greet = "Hello" + " " + name;
+    return greet;
+}
+
+function testhelloName() {
+    // test data - is an array of test values which are object
+    // each time we test a function, that will be one object made up of
+    // 2 properties, 1 is input values array and another is return value
+
+    var testData = [
+        /* 0 */
+        {
+            inputParams: ["Bob"],
+            expectedOutput: "Hello Bob"
+        }, {
+            inputParams: ["Alice"],
+            expectedOutput: "Hello Alice"
+        }, {
+            inputParams: ["X"],
+            expectedOutput: "Hello X"
+        }
+    ];
+
+    // testing code
+
+    testData.forEach(
+        function(obj) {
+            var returnedOutput = helloName.apply(null, obj.inputParams);
+            console.log(returnedOutput === obj.expectedOutput,
+                "expecting " + obj.expectedOutput + ", but returned value is " + returnedOutput);
+        }
+    );
+}
+
+testhelloName();
+</script>
+
+</html>

@@ -1,0 +1,42 @@
+<html>
+<script>
+function fix34(nums) {
+    var fromIndex = 0;
+    while (fromIndex < nums.length) {
+        var next3Index = findNext3(nums, fromIndex);
+        if (next3Index == -1) break;
+        var next4Index = findNext4(nums, fromIndex + 1);
+        var tmp = nums[next3Index + 1];
+        nums[next3Index + 1] = nums[next4Index];
+        nums[next4Index] = tmp;
+        fromIndex += 2;
+    }
+    return nums;
+}
+
+function findNext3(nums, fromIndex) {
+    return findNextN(3, nums, fromIndex);
+}
+
+function findNext4(nums, fromIndex) {
+    return findNextN(4, nums, fromIndex);
+}
+
+function findNextN(n, nums, fromIndex) {
+    var found = false;
+    var index = fromIndex;
+    while (index < nums.length) {
+        if (nums[index] == n) {
+            found = true;
+            break;
+        }
+        index++;
+    }
+    if (!found) return -1;
+    return index;
+}
+
+console.log(JSON.stringify(fix34([1, 3, 1, 4])));
+</script>
+
+</html>

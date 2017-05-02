@@ -1,0 +1,46 @@
+<html>
+<script>
+/* Given a string, return the sum of the numbers appearing in the string, ignoring all other characters. A number is a series of 1 or more digit chars in a row. (Note: Character.isDigit(char) tests if a char is one of the chars '0', '1', .. '9'. Integer.parseInt(string) converts a string to an int.) */
+
+// actual solution
+
+function sumNumbers(str) {
+
+    // console.log(JSON.stringify(arguments));
+
+}
+
+function testsumNumbers() {
+    // test data - is an array of test values which are object
+    // each time we test a function, that will be one object made up of
+    // 2 properties, 1 is input values array and another is return value
+
+    var testData = [
+        /* 0 */
+        {
+            inputParams: ["abc123xyz"],
+            expectedOutput: 123
+        }, {
+            inputParams: ["aa11b33"],
+            expectedOutput: 44
+        }, {
+            inputParams: ["7 11"],
+            expectedOutput: 18
+        }
+    ];
+
+    // testing code
+
+    testData.forEach(
+        function(obj) {
+            var returnedOutput = sumNumbers.apply(null, obj.inputParams);
+            console.log(returnedOutput === obj.expectedOutput,
+                "expecting " + obj.expectedOutput + ", but returned value is " + returnedOutput);
+        }
+    );
+}
+
+testsumNumbers();
+</script>
+
+</html>

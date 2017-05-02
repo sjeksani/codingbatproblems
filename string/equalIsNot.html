@@ -1,0 +1,58 @@
+<html>
+<script>
+/* Given a string, return true if the number of appearances of "is" anywhere in the string is equal to the number of appearances of "not" anywhere in the string (case sensitive). */
+
+// actual solution
+
+function equalIsNot(str) {
+
+    // console.log(JSON.stringify(arguments));
+    var count1 = 0;
+    var count2 = 0;
+    str = str + "x";
+    for (var i = 0; i < str.length - 2; i++) {
+        if (str.substring(i, i + 2) == "is") {
+            count1++;
+        }
+        if (str.substring(i, i + 3) == "not") {
+            count2++;
+        }
+    }
+
+    return (count1 == count2);
+}
+
+function testequalIsNot() {
+    // test data - is an array of test values which are object
+    // each time we test a function, that will be one object made up of
+    // 2 properties, 1 is input values array and another is return value
+
+    var testData = [
+        /* 0 */
+        {
+            inputParams: ["This is not"],
+            expectedOutput: false
+        }, {
+            inputParams: ["This is notnot"],
+            expectedOutput: true
+        }, {
+            inputParams: ["noisxxnotyynotxisi"],
+            expectedOutput: true
+        }
+    ];
+
+    // testing code
+
+    testData.forEach(
+        function(obj) {
+            var returnedOutput = equalIsNot.apply(null, obj.inputParams);
+            console.log(returnedOutput === obj.expectedOutput,
+                "expecting " + obj.expectedOutput + ", but returned value is " + returnedOutput);
+        }
+    );
+}
+
+testequalIsNot();
+</script>
+
+</html>

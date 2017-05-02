@@ -1,0 +1,50 @@
+<html>
+<script>
+/* We'll say that a "triple" in a string is a char appearing three times in a row. Return the number of triples in the given string. The triples may overlap. */
+
+// actual solution
+
+function countTriple(string) {
+
+    // console.log(JSON.stringify(arguments));
+    var count = 0;
+    for (var i = 0; i < string.length - 2; i++)
+        if (string.charAt(i) == string.charAt(i + 1) && string.charAt(i + 1) == string.charAt(i + 2))
+            count++;
+    return count;
+}
+
+function testcountTriple() {
+    // test data - is an array of test values which are object
+    // each time we test a function, that will be one object made up of
+    // 2 properties, 1 is input values array and another is return value
+
+    var testData = [
+        /* 0 */
+        {
+            inputParams: ["abcXXXabc"],
+            expectedOutput: 1
+        }, {
+            inputParams: ["xxxabyyyycd"],
+            expectedOutput: 3
+        }, {
+            inputParams: ["a"],
+            expectedOutput: 0
+        }
+    ];
+
+    // testing code
+
+    testData.forEach(
+        function(obj) {
+            var returnedOutput = countTriple.apply(null, obj.inputParams);
+            console.log(returnedOutput === obj.expectedOutput,
+                "expecting " + obj.expectedOutput + ", but returned value is " + returnedOutput);
+        }
+    );
+}
+
+testcountTriple();
+</script>
+
+</html>

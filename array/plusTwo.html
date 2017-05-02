@@ -1,0 +1,83 @@
+<html>
+<script>
+/*Given 2 int arrays, each length 2, return a new array length 4 containing all their elements. */
+
+// actual solution
+
+function plusTwo() {
+    // console.log(JSON.stringify(arguments));
+    var result = [];
+    result.push(arguments[0][0]);
+    result.push(arguments[0][1]);
+    result.push(arguments[1][0]);
+    result.push(arguments[1][1]);
+    return result;
+}
+
+function testplusTwo() {
+    // test data - is an array of test values which are object
+    // each time we test a function, that will be one object made up of
+    // 2 properties, 1 is input values array and another is return value
+
+    var testData = [
+        /* 0 */
+        {
+            inputParams: [
+                [1, 2],
+                [7, 9]
+            ],
+            expectedOutput: [1, 2, 7, 9]
+        }, {
+            inputParams: [
+                [1, 2],
+                [2, 7]
+            ],
+            expectedOutput: [1, 2, 2, 7]
+        }, {
+            inputParams: [
+                [1, 7],
+                [3, 4]
+            ],
+            expectedOutput: [1, 7, 3, 4]
+        }, {
+            inputParams: [
+                [6, 9],
+                [2, 8]
+            ],
+            expectedOutput: [6, 9, 2, 8]
+        }, {
+            inputParams: [
+                [2, 3],
+                [1, 4]
+            ],
+            expectedOutput: [2, 3, 1, 4]
+        }, {
+            inputParams: [
+                [3, 5],
+                [1, 9]
+            ],
+            expectedOutput: [3, 5, 1, 9]
+        }, {
+            inputParams: [
+                [1, 9],
+                [1, 1]
+            ],
+            expectedOutput: [1, 9, 1, 1]
+        }
+    ];
+
+    // testing code
+
+    testData.forEach(
+        function(obj) {
+            var returnedOutput = plusTwo.apply(null, obj.inputParams);
+            console.assert(returnedOutput === obj.expectedOutput,
+                "expecting " + obj.expectedOutput + ", but returned value is " + returnedOutput);
+        }
+    );
+}
+
+testplusTwo();
+</script>
+
+</html>

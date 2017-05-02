@@ -1,0 +1,62 @@
+<html>
+<script>
+/*
+Given an array of ints of odd length, look at the first, last, and middle values in the array and return the largest. The array length will be a least 1.*/
+
+// actual solution
+
+function maxTriple() {
+    // console.log(JSON.stringify(arguments));
+    var count = 0;
+    for (var i = 0; i < arguments.length; i++) {
+        if (arguments[i] > count) count = arguments[i];
+    }
+    return count;
+}
+
+function testmaxTriple() {
+    // test data - is an array of test values which are object
+    // each time we test a function, that will be one object made up of
+    // 2 properties, 1 is input values array and another is return value
+
+    var testData = [
+        /* 0 */
+        {
+            inputParams: [1, 2, 3],
+            expectedOutput: 3
+        }, {
+            inputParams: [1, 5, 3],
+            expectedOutput: 5
+        }, {
+            inputParams: [9, 2, 3],
+            expectedOutput: 9
+        }, {
+            inputParams: [11, 9, 0],
+            expectedOutput: 11
+        }, {
+            inputParams: [2, 12, 9],
+            expectedOutput: 12
+        }, {
+            inputParams: [2, 7, 7],
+            expectedOutput: 7
+        }, {
+            inputParams: [2, 15, 12],
+            expectedOutput: 15
+        }
+    ];
+
+    // testing code
+
+    testData.forEach(
+        function(obj) {
+            var returnedOutput = maxTriple.apply(null, obj.inputParams);
+            console.log(returnedOutput === obj.expectedOutput,
+                "expecting " + obj.expectedOutput + ", but returned value is " + returnedOutput);
+        }
+    );
+}
+
+testmaxTriple();
+</script>
+
+</html>

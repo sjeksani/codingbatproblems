@@ -1,0 +1,60 @@
+<html>
+<script>
+/*
+Given an array of ints length 3, return a new array with the elements in reverse order, so {1, 2, 3} becomes {3, 2, 1}.*/
+
+// actual solution
+
+function reverse3() {
+
+
+    /* var a = [];
+    for (var i = arguments.length; i > 0; i--) {
+        a.push(arguments[i - 1]);
+    }
+
+    return a; */
+
+}
+
+function testreverse3() {
+    // test data - is an array of test values which are object
+    // each time we test a function, that will be one object made up of
+    // 2 properties, 1 is input values array and another is return value
+
+    var testData = [
+        /* 0 */
+        {
+            inputParams: [1, 2, 3],
+            expectedOutput: [3, 2, 1]
+        }, {
+            inputParams: [5, 11, 9],
+            expectedOutput: [9, 11, 5]
+        }, {
+            inputParams: [7, 0, 0],
+            expectedOutput: [0, 0, 7]
+        }, {
+            inputParams: [2, 1, 2],
+            expectedOutput: [2, 1, 2]
+        }, {
+            inputParams: [1, 2, 1],
+            expectedOutput: [1, 2, 1]
+        }
+    ];
+
+    // testing code
+
+    testData.forEach(
+        function(obj) {
+            var returnedOutput = reverse3.apply(null, obj.inputParams);
+            console.assert(returnedOutput === obj.expectedOutput,
+                "expecting " + obj.expectedOutput + ", but returned value is " + returnedOutput + " for the input params " + JSON.stringify(obj.inputParams));
+            console.log(returnedOutput);
+        }
+    );
+}
+
+testreverse3();
+</script>
+
+</html>

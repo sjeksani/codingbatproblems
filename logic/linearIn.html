@@ -1,0 +1,84 @@
+<html>
+<script>
+/*
+Given two arrays of ints sorted in increasing order, outer and inner, return true if all of the numbers in inner appear in outer. The best solution makes only a single "linear" pass of both arrays, taking advantage of the fact that both arrays are already in sorted order. */
+
+// actual solution
+
+function linearIn(outer, inner) {
+    var count = 0;
+    for (var i = 0; i < inner.length; i++) {
+        if (checkVal(inner[i], outer)) {
+            count++;
+        }
+    }
+    if (count == inner.length) {
+        return true;
+    }
+    return false;
+}
+
+
+function checkVal(num, array) {
+    for (var i = 0; i < array.length; i++) {
+        if (array[i] == num) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function testlinearIn() {
+    // test data - is an array of test values which are object
+    // each time we test a function, that will be one object made up of
+    // 2 properties, 1 is input values array and another is return value
+
+    var testData = [
+        /* 0 */
+        {
+            inputParams: [
+                [1, 2, 4, 6],
+                [2, 4]
+            ],
+            expectedOutput: true
+        }, {
+            inputParams: [
+                [1, 2, 4, 6],
+                [2, 3, 4]
+            ],
+            expectedOutput: false
+        }, {
+            inputParams: [
+                [1, 2, 4, 4, 6],
+                [2, 4]
+            ],
+            expectedOutput: true
+        }, {
+            inputParams: [
+                [2, 2, 4, 4, 6, 6],
+                [2, 4]
+            ],
+            expectedOutput: true
+        }, {
+            inputParams: [
+                [2, 2, 2, 2, 2],
+                [2, 2]
+            ],
+            expectedOutput: true
+        }
+    ];
+
+    // testing code
+
+    testData.forEach(
+        function(obj) {
+            var returnedOutput = linearIn.apply(null, obj.inputParams);
+            console.log(returnedOutput === obj.expectedOutput,
+                "expecting " + obj.expectedOutput + ", but returned value is " + returnedOutput);
+        }
+    );
+}
+testlinearIn();
+</script>
+
+</html>
